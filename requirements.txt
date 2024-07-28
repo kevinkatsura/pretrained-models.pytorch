@@ -5,3 +5,4 @@ tqdm
 scipy
 numpy~=1.26
 # pillow<7
+# numpy
