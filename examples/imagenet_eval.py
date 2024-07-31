@@ -255,7 +255,7 @@ def validate(val_loader, model, criterion):
 
 
 def save_checkpoint(state, is_best, model_name, path='/content/drive/My Drive/Neural Network/checkpoints', epoch=""):
-    filename = f"{path}/{model_name}_{str(datetime.now())}{f"_{epoch}" if epoch else ""}.pth.tar"
+    filename = f"{path}/{model_name}_{str(datetime.now())}_{epoch}.pth.tar"
     torch.save(state, filename)
     if is_best:
         shutil.copyfile(filename, f'{path}/{model_name}_best.pth.tar')
