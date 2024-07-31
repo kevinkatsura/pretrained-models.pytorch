@@ -19,6 +19,8 @@ sys.path.append('.')
 import pretrainedmodels
 import pretrainedmodels.utils
 
+from datetime import datetime
+
 model_names = sorted(name for name in pretrainedmodels.__dict__
                      if not name.startswith("__")
                      and name.islower()
@@ -252,10 +254,11 @@ def validate(val_loader, model, criterion):
         return top1.avg, top5.avg
 
 
-def save_checkpoint(state, is_best, filename='checkpoint.pth.tar'):
+def save_checkpoint(state, is_best, model_name, path='/content/drive/My Drive/Neural Network/checkpoints', epoch=""):
+    filename = f"{path}/{model_name}_{str(datetime.now())}{f"_{epoch}" if epoch else ""}.pth.tar"
     torch.save(state, filename)
     if is_best:
-        shutil.copyfile(filename, 'model_best.pth.tar')
+        shutil.copyfile(filename, f'{path}/{model_name}_best.pth.tar')
 
 
 class AverageMeter(object):
