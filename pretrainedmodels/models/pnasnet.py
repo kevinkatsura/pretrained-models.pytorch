@@ -366,6 +366,7 @@ class PNASNet5Large(nn.Module):
     def forward(self, input):
         x = self.features(input)
         x = self.logits(x)
+        x = torch.sigmoid(x)
         return x
 
 
